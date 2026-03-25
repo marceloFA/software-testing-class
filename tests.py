@@ -104,3 +104,20 @@ def test_remove_choices_on_an_empty_question():
     question = Question(title='q1')
     question.remove_all_choices()
     assert len(question.choices) == 0
+
+# Tests with fixtures:
+
+@pytest.fixture
+def question():
+    question = Question(title='q1', max_selections=3, points=50)
+    question.add_choice('a', False)
+    question.add_choice('b', False)
+    question.add_choice('c', False)
+    return question
+
+def test_set_correct_choices(question):
+    question.set_correct_choices([1, 3])
+    assert [choice.is_correct for choice in question.choices] == [True, False, True]
+
+def test_question_points_attribute(question):
+    assert question.points == 50
