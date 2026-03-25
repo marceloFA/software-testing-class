@@ -71,6 +71,7 @@ Nossos testes utilizam o framework de testes [pytest](https://docs.pytest.org).
 Instale o pytest:
 
 ```
+# Force Github Actions to run
 $ pip install pytest
 ```
 
